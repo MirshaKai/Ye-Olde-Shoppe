@@ -36,7 +36,7 @@ public class TreeFactory : MonoBehaviour {
 	}
 
 	// Destroys a tree and updates the factory
-	public void DestroyTree(GameObject tree) {
+	public void TreeDestroy(GameObject tree) {
 		trees.Remove (tree);
 		Destroy (tree);
 	}
