@@ -30,7 +30,7 @@ public class Tasks : MonoBehaviour {
 		}
 	}
 
-	void RemoveTask(GameObject task) {
+	public void RemoveTask(GameObject task) {
 		this.tasks.Remove (task);
 	}
 

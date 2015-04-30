@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TreeFactory : MonoBehaviour {
+public class TreeFactory : TaskFactory {
 	public static TreeFactory instance;
 	public GameObject spawnArea;
 	public GameObject targetObject;
@@ -33,12 +33,6 @@ public class TreeFactory : MonoBehaviour {
 		}
 
 		return null;
-	}
-
-	// Destroys a tree and updates the factory
-	public void TreeDestroy(GameObject tree) {
-		trees.Remove (tree);
-		Destroy (tree);
 	}
 
 	// Gets a reference to a tree, creating one if needed
