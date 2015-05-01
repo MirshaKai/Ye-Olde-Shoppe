@@ -8,8 +8,6 @@ public class TreeFactory : TaskFactory {
 	public GameObject targetObject;
 	public int treeLimit = 10;
 
-	private List<GameObject> trees = new List<GameObject>();
-
 	void Awake() {
 		instance = this;
 	}
@@ -17,7 +15,7 @@ public class TreeFactory : TaskFactory {
 	// Creates a tree and finds a place to put it
 	public GameObject CreateTree() {
 		// Sanity check to prevent run away tree creation
-		if (trees.Count < this.treeLimit) {
+		if (this.objects.Count < this.treeLimit) {
 			GameObject newTarget = GameObject.Instantiate (targetObject);
 			Vector3 newPosition = this.CreateVector();
 
@@ -26,7 +24,8 @@ public class TreeFactory : TaskFactory {
 			}
 
 			newTarget.transform.position = this.CreateVector();
-			this.trees.Add (newTarget);
+
+			Add (newTarget);
 			return newTarget;
 		} else {
 			Debug.Log("Reached tree limit, not making any more");
@@ -37,11 +36,11 @@ public class TreeFactory : TaskFactory {
 
 	// Gets a reference to a tree, creating one if needed
 	public GameObject GetTree() {
-		if (this.trees.Count == 0) {
+		if (this.objects.Count == 0) {
 			CreateTree ();
 		}
 
-		return this.trees [this.trees.Count - 1];
+		return this.objects [this.objects.Count - 1];
 	}
 
 	public Vector3 CreateVector() {

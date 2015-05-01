@@ -9,7 +9,6 @@ public class PursueTarget : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		navAgent = this.transform.GetComponent<NavMeshAgent>();
-		target = TreeFactory.instance.GetTree ();
 	}
 	
 	// Update is called once per frame
@@ -17,8 +16,7 @@ public class PursueTarget : MonoBehaviour {
 		if (target) {
 			navAgent.SetDestination (target.transform.position);
 		} else {
-			target = TreeFactory.instance.GetTree();
-
+			target = Tasks.instance.GetTask();
 		}
 	}
 	
@@ -28,14 +26,14 @@ public class PursueTarget : MonoBehaviour {
 			other.gameObject.SetActive(false);
 			this.holding = other.gameObject;
 		} else if (other.gameObject.tag == "WoodBin" && this.holding != null) {
-			target = TreeFactory.instance.GetTree();
+			target = Tasks.instance.GetTask();
 			target.gameObject.GetComponent<TreeObject>().user = this.gameObject;
 			this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			WoodStock.instance.AddWood(1);
 			Destroy(this.holding);
 			this.holding = null;
 		} else {
-			Debug.Log ("Unknown collision: " + other);
+			Debug.Log ("Unknown collision: " + other.gameObject.name);
 		}
 	}
 }

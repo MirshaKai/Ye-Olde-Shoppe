@@ -16,7 +16,7 @@ public class Tasks : MonoBehaviour {
 
 	void Update() {
 		// If we don't have anything to do, get get resources!
-		if (this.tasks.Count == 0) { 
+		if (this.tasks.Count < 3) { 
 			this.tasks.Add(TreeFactory.instance.CreateTree());
 		}
 
@@ -32,6 +32,14 @@ public class Tasks : MonoBehaviour {
 
 	public void RemoveTask(GameObject task) {
 		this.tasks.Remove (task);
+	}
+
+	public GameObject GetTask() {
+		if (this.tasks.Count > 0) {
+			return this.tasks[this.tasks.Count - 1];
+		}
+
+		return null;
 	}
 
 }
