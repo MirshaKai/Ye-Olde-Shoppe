@@ -22,11 +22,12 @@ public class Tasks : MonoBehaviour {
 
 		if (Debug.isDebugBuild) {
 			this.debugPanel.text = "";
-			int maxDebug = Math.Min(tasks.Count, 5);
+			int maxDebug = Math.Min(this.tasks.Count, 5);
 
 			for (int i = 0; i < maxDebug; i++) {
 				this.debugPanel.text += "Get: " + tasks[i].name + Environment.NewLine;
 			}
+
 		}
 	}
 

@@ -10,6 +10,5 @@ public class TreeObject : MonoBehaviour {
 
 		// Remove tree from the tree factory
 		TreeFactory.instance.Remove (this.gameObject);
-
 	}
 }
