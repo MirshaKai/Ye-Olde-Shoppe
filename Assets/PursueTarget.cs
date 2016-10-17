@@ -5,12 +5,13 @@ public class PursueTarget : MonoBehaviour {
 	private NavMeshAgent navAgent;
 	private GameObject target;
 	private GameObject holding;
+	private GameObject test;
 
 	// Use this for initialization
 	void Start () {
 		navAgent = this.transform.GetComponent<NavMeshAgent>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (target) {
@@ -19,7 +20,7 @@ public class PursueTarget : MonoBehaviour {
 			target = Tasks.instance.GetTask();
 		}
 	}
-	
+
 	void OnCollisionEnter(Collision other) {
 		if (other.gameObject.tag == "Target" && other.gameObject.name == target.name) {
 			target = WoodStock.instance.GetDestinationBin ();
