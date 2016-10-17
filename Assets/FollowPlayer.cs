@@ -3,6 +3,7 @@ using System.Collections;
 
 public class FollowPlayer : MonoBehaviour {
 	private GameObject focus;
+	private GameObject something;
 
 	void Awake() {
 		focus = GameObject.Find ("Mover");
