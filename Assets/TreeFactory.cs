@@ -6,7 +6,7 @@ public class TreeFactory : TaskFactory {
 	public static TreeFactory instance;
 	public GameObject spawnArea;
 	public GameObject targetObject;
-	public int treeLimit = 10;
+	public int treeLimit = 5;
 
 	void Awake() {
 		instance = this;
@@ -45,7 +45,7 @@ public class TreeFactory : TaskFactory {
 
 	public Vector3 CreateVector() {
 		Vector3 newPosition = this.MakeVector ();
-		
+
 		// Get some coordinates that aren't inside another object, exit if we struggle to find coordinates
 		int loopCount = 0;
 		while (Physics.CheckSphere(newPosition, 1.0f) && loopCount < 10) {
